@@ -8,11 +8,13 @@ const Login: React.FC = () => {
     password: "",
     confirmPassword: "",
   });
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!(formData.confirmPassword === formData.password)) {
-      return -1;
+      setErrorMessage("Passwords do not match.");
+      return;
     }
 
     if (isLogin) {
