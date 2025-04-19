@@ -10,6 +10,15 @@ const Login: React.FC = () => {
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [errorMessage]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!(formData.confirmPassword === formData.password)) {
@@ -117,6 +126,11 @@ const Login: React.FC = () => {
               ? "Need an account? Sign up"
               : "Already have an account? Sign in"}
           </p>
+          {errorMessage && (
+            <div className="mt-6 p-4 text-red-200 bg-red-900/50 border border-red-800 rounded-lg text-center text-sm">
+              {errorMessage}
+            </div>
+          )}
         </div>
       </div>
     </div>
