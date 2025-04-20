@@ -1,12 +1,8 @@
 import { ReactNode } from 'react'
 
-type Props = {
-  children: ReactNode
-}
-
-export default function MainLayout({ children }: Props) {
+export default function MainLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen font-sans">
+    <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
       {children}
     </div>
   )
