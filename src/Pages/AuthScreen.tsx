@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "./supabaseClient";
+import { supabase } from "../supabaseClient";
 
 const Login: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);

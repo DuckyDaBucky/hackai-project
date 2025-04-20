@@ -1,16 +1,25 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SplashPage from './Pages/SplashPage'
 import LoadingPage from './Pages/LoadingPage'
-import ReportPage from './Pages/ReportPage' // we’ll build this next
+import ReportPage from './Pages/ReportPage'
+import AuthScreen from './Pages/AuthScreen'
+import AboutUsPage from './Pages/AboutUsPage'
+import MainLayout from './Layouts/MainLayout'
 
-export default function App() {
+function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SplashPage />} />
-        <Route path="/loading" element={<LoadingPage />} />
-        <Route path="/report" element={<ReportPage />} />  
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<SplashPage />} />
+          <Route path="/loading" element={<LoadingPage />} />
+          <Route path="/report" element={<ReportPage />} />
+          <Route path="/auth" element={<AuthScreen />} />
+          <Route path="/about" element={<AboutUsPage />} />
+        </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   )
 }
+
+export default App

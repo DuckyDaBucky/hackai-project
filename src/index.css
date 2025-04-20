@@ -8,3 +8,7 @@ html, body {
   @apply font-sans scroll-smooth;
 }
 
+.invert-colors {
+  filter: invert(1);
+}
+
