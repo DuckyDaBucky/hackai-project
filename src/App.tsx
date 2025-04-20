@@ -11,13 +11,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<MainLayout />}>
           <Route path="/" element={<SplashPage />} />
           <Route path="/loading" element={<LoadingPage />} />
           <Route path="/auth" element={<AuthScreen />} />
           <Route path="/about" element={<AboutUsPage />} />
         </Route>
-
         <Route element={<ReportLayout />}>
           <Route path="/report" element={<ReportPage />} />
         </Route>

@@ -31,11 +31,14 @@ export default function PDFUpload({ onUpload }: Props) {
     <div
       onDrop={handleDrop}
       onDragOver={(e) => e.preventDefault()}
-      className="border-2 border-dashed border-gray-300 p-8 rounded-xl bg-white hover:border-indigo-400 cursor-pointer transition-colors duration-200"
+      className="mx-auto max-w-xl border-2 border-dashed border-gray-300 rounded-2xl bg-white/50 backdrop-blur-md shadow-md p-8 cursor-pointer transition hover:scale-105 hover:shadow-lg hover:border-plum"
       onClick={() => fileInputRef.current?.click()}
     >
-      <FiUpload size={32} className="mx-auto mb-4 text-gray-500" />
-      <p className="text-sm text-gray-500">Click or drag & drop a PDF</p>
+      <div className="flex flex-col items-center space-y-4 text-graySlate font-body">
+        <FiUpload size={48} className="text-graySlate" />
+        <h2 className="text-lg font-semibold">Upload your annual report</h2>
+        <p className="text-sm text-gray-500">Click to upload or drag and drop a PDF</p>
+      </div>
       <input
         type="file"
         accept="application/pdf"
