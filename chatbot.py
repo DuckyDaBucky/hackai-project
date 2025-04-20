@@ -1,12 +1,16 @@
 import json
+import os
 import fitz  # PyMuPDF
 import google.generativeai as genai
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # === CONFIGURATION ===
-GEMINI_API_KEY = "AIzaSyDOfZX-K1Zno0r6r61jZwHcSnfRFGCE5g8"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 PDF_PATH = "ltimindtree_annual_report.pdf"
 
 genai.configure(api_key=GEMINI_API_KEY)

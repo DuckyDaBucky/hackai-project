@@ -1,0 +1,175 @@
+{
+  "slides": [
+    {
+      "slide": "Financial Highlights (FY24)",
+      "elements": [
+        {
+          "bullets": [
+            "Revenue: INR 355,170 Million, a 7.0% year-over-year growth.",
+            "Profit After Tax (PAT): INR 45,846 Million, a 4.0% year-over-year growth.",
+            "Return on Equity (ROE): 25.0%",
+            "Customer Satisfaction Rating: 5.85"
+          ]
+        },
+        {
+          "bullets": [
+            "CSR Spend: INR 807 Million supporting 598,698 livelihoods.",
+            "Energy Consumption: 198,654 GJ.",
+            "Water Consumption: 333.724 ML.",
+            "Waste Recycled: 92.14%."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Workforce & Learning",
+      "elements": [
+        {
+          "bullets": [
+            "Total Employees: 81,000+",
+            "Female Employees: 30.7% of the workforce.",
+            "142 Self-Identified PWD, 98 Self-Identified LGBTQ+, and 86 Self-Identified Veterans",
+            "101 Nationalities represented among employees."
+          ]
+        },
+        {
+          "bullets": [
+            "Total Learning Hours: 4.37 Million.",
+            "Associates Gaining New Skills: 97%.",
+            "Average Learning Per Employee: 6.5 days.",
+            "Digital Learning Platform: Shoshin School offering 15,000+ courses and assessments."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Global Presence & Clientele",
+      "elements": [
+        {
+          "bullets": [
+            "Global Presence: Operations in 38 countries.",
+            "Total Active Clients: 738.",
+            "New Client Additions: 102.",
+            "Key Stakeholders: Clients, Employees, Investors & Shareholders, Suppliers, Communities & NGOs, Government & Regulatory Bodies, Industry Bodies, Media, Academic Institutions."
+          ]
+        },
+        {
+          "bullets": [
+            "Export Contribution: 94% of total turnover from exports.",
+            "National Locations: Business activities in 9 states in India.",
+            "International Locations: Business activities in 37 countries globally."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Strategic Partnerships",
+      "elements": [
+        {
+          "bullets": [
+            "Premier Tier Partner for Amazon Web Services (AWS).",
+            "13,400+ accredited cloud experts and 1,855+ Certified AWS Professionals.",
+            "Awarded Sustainability Partner of the Year at AWS re:Invent 2023.",
+            "Strategic agreement with AWS on Gen AI solutions."
+          ]
+        },
+        {
+          "bullets": [
+            "System Integrator and Premier Partner for Google Cloud Platform (GCP) and Google Workspace.",
+            "Data Analytics specialization, 37 Expertise and has over 800 GCP certified associates.",
+            "Strategic vendor to Google\u2019s \u2018Professional Services Organization\u2019 (PSO).",
+            "Scaling up investments to ramp up the \u2018GCP CoE\u2019."
+          ]
+        },
+        {
+          "bullets": [
+            "IBM\u2019s GSI and Platinum Business Partner with global coverage.",
+            "First Indian Global System Integrator (GSI) to join the IBM Quantum Network.",
+            "IBM Partner Plus Award 2023 in the Digital Labor category for the APAC geography.",
+            "Strategic engagement with IBM on watsonx portfolio around .data, .ai and .gov offerings."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Sustainability Initiatives",
+      "elements": [
+        {
+          "bullets": [
+            "Focus on a holistic sustainability strategy.",
+            "ESG Solutions powered by ServiceNow and the NXT platform.",
+            "Integration of data collection from multiple systems for real-time tracking and reporting.",
+            "ESG targets and performance reporting are a key priority."
+          ]
+        },
+        {
+          "bullets": [
+            "Aligned with ESG goals, emphasizing transition and carbon-offset projects.",
+            "Energy-saving power management system in place.",
+            "Adoption of conservation strategies across facilities.",
+            "Implemented 3R (Reduce, Reuse and Recycle) approach, rainwater harvesting, and wastewater recycling."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Digital Engineering & AI",
+      "elements": [
+        {
+          "bullets": [
+            "Specializing in Application Migration and Modernization using cloud technology.",
+            "Offering Outsourced Product Development and Engineering services.",
+            "Platform Modernization and Engineering expertise for streamlined systems.",
+            "Focus on adoption of Cloud Technology for businesses."
+          ]
+        },
+        {
+          "bullets": [
+            "Expertise in developing, integrating, and managing AI and analytics solutions.",
+            "Offering consulting expertise to expedite and optimize AI and analytics transition.",
+            "Digital experience services consisting of e-commerce to digital marketing and IP-driven product engineering.",
+            "Leveraging the power of AI, Mixed Reality (MR), and Virtual Reality (VR)."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Equity & Liabilities",
+      "elements": [
+        {
+          "bullets": [
+            "Equity Share Capital: INR 296 Million.",
+            "Other Equity (Other Reserves): INR 14,266 Million.",
+            "Other Equity (Retained Earnings): INR 178,422 Million.",
+            "Total Equity: INR 192,985 Million."
+          ]
+        },
+        {
+          "bullets": [
+            "Non-Current Liabilities: INR 16,900 Million.",
+            "Current Liabilities: INR 54,692 Million.",
+            "Total Liabilities: INR 71,592 Million.",
+            "Total Equity and Liabilities: INR 264,577 Million."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Business Overview",
+      "elements": [
+        {
+          "bullets": [
+            "Business activity: Computer programming, consultancy, and related activities.",
+            "Turnover from Information and communication (J6, J8): 100%",
+            "Services: IT and IT-enabled services including digital transformation services, enterprise solutions, technology consulting."
+          ]
+        },
+        {
+          "bullets": [
+            "Number of locations: 39 National offices, 77 international offices, 1 international datacenter."
+          ]
+        }
+      ]
+    }
+  ]
+}
