@@ -5,94 +5,79 @@ import json
 # === CONFIG ===
 GEMINI_API_KEY = "AIzaSyDOfZX-K1Zno0r6r61jZwHcSnfRFGCE5g8"
 PDF_PATH = "ltimindtree_annual_report.pdf"
-OUTPUT_PATH = "report_slides.json"
+OUTPUT_PATH = "report_slides_condensed.json"
 
 # === Setup Gemini ===
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel(model_name="models/gemini-2.0-flash")
 
-# === Step 1: Extract full text from PDF ===
-def extract_text_from_pdf(pdf_path):
+# === Step 1: Extract full text from PDF and page map ===
+def extract_text_with_pages(pdf_path):
     doc = fitz.open(pdf_path)
-    full_text = ""
-    for page in doc:
-        full_text += page.get_text() + "\n"
+    pages = []
+    for page_num, page in enumerate(doc, start=1):
+        text = page.get_text()
+        if text:
+            pages.append({"page": page_num, "text": text.strip()})
+    return pages
+
+# === Step 2: Combine all text ===
+def combine_all_text(pages):
+    full_text = "\n".join([p["text"] for p in pages])
     return full_text
 
-# === Step 2: Chunk text into reasonable-sized pieces ===
-def chunk_text(text, max_chars=8000):
-    paragraphs = text.split("\n")
-    chunks, current = [], ""
-    for para in paragraphs:
-        if len(current) + len(para) < max_chars:
-            current += para.strip() + " "
-        else:
-            chunks.append(current.strip())
-            current = para.strip() + " "
-    if current:
-        chunks.append(current.strip())
-    return chunks
-
-# === Step 3: Ask Gemini to generate structured slides for each chunk ===
-def ask_gemini_for_chunk(chunk_text, chunk_index, total_chunks):
+# === Step 3: Ask Gemini to generate condensed business slides ===
+def generate_condensed_slides(text):
     prompt = f"""
-You are an AI assistant summarizing part {chunk_index + 1} of {total_chunks} of a company's annual report.
+You are an AI assistant helping create a condensed slide deck from a company's annual report.
 
-Your task is to generate structured JSON presentation slides for this portion.
+Your job is to extract the most important and quantitative information from the report and organize it into 7 to 10 meaningful slide categories.
+
 Each slide should:
-- Represent a meaningful section from this chunk
-- Have a "title" and an array of "elements"
+- Have a \"slide\" title (e.g., \"Financial Highlights\")
+- Contain 3 to 5 \"elements\"
+- Each element should be a mini-section with 4 to 6 high-quality bullet points
+- Emphasize numbers, percentages, rankings, or KPIs wherever relevant
 
-Each element must have:
-- "type": one of ["bullet-points", "paragraph", "bar-chart", "line-chart", "pie-chart"]
-- "content": a string (for paragraphs) or a list of 3–7 strings (for bullet-points)
-- "data": null unless the type is a chart (then provide structured chart data)
+Return valid JSON with this structure:
+{{
+  "slides": [
+    {{
+      "slide": "...",
+      "elements": [
+        {{"bullets": ["...", "..."]}},
+        ...
+      ]
+    }},
+    ...
+  ]
+}}
 
-Do not use triple backticks (```), single backticks (`), markdown formatting, explanations, or comments.
-Return valid JSON only, starting with '{' and ending with '}'. No markdown, no commentary.
-
-Report chunk:
-{chunk_text}
+Report:
+{text}
 """
-    response = model.generate_content(prompt, stream=True)
-    full_response = ""
-    for part in response:
-        full_response += part.text
-        
-    print("Response for chunk " + str(chunk_index) + " " + full_response[1:-1])
-    return full_response[1:-1]
-
-# === Step 4: Save and Merge All Slides ===
-def save_final_json(slides_list, output_path):
-    merged = {"slides": slides_list}
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(merged, f, indent=2)
-    print(f"✅ Saved: {output_path}")
+    response = model.generate_content(prompt)
+    try:
+        raw = response.text.strip()
+        if raw.startswith("```"):
+            raw = raw.strip('`').strip()
+        if raw.startswith("json"):
+            raw = raw[4:].strip()
+        parsed = json.loads(raw)
+        return parsed
+    except Exception as e:
+        print("❌ Gemini failed to produce valid JSON:", e)
+        return {"slides": []}
 
 # === Main ===
 if __name__ == "__main__":
-    full_text = extract_text_from_pdf(PDF_PATH)
-    chunks = chunk_text(full_text)
-    all_slides = []
+    print("📄 Extracting text from PDF...")
+    pages = extract_text_with_pages(PDF_PATH)
+    full_text = combine_all_text(pages)
 
-    for i, chunk in enumerate(chunks):
-        print(f"\n⏳ Processing chunk {i + 1} of {len(chunks)}...")
-        try:
-            response_text = ask_gemini_for_chunk(chunk, i, len(chunks))
-            if not response_text.strip().endswith("}"):
-                response_text += "}" * (response_text.count("{") - response_text.count("}"))
-            parsed = json.loads(response_text)
+    print("🧠 Generating condensed slides with Gemini...")
+    condensed = generate_condensed_slides(full_text)
 
-            # If the parsed object is a list, just use it directly
-            if isinstance(parsed, list):
-                all_slides.extend(parsed)
-            elif isinstance(parsed, dict) and "slides" in parsed:
-                all_slides.extend(parsed["slides"])
-            else:
-                print("⚠️ Unexpected JSON structure.")
-
-        except json.JSONDecodeError:
-            print(f"❌ JSON error in chunk {i + 1}. Skipping.")
-            continue
-
-    save_final_json(all_slides, OUTPUT_PATH)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(condensed, f, indent=2)
+        print(f"✅ Saved: {OUTPUT_PATH}")

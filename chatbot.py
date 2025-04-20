@@ -1,37 +1,47 @@
 import json
+import fitz  # PyMuPDF
 import google.generativeai as genai
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
 # === CONFIGURATION ===
-GEMINI_API_KEY = "AIzaSyDOfZX-K1Zno0r6r61jZwHcSnfRFGCE5g8"  # Replace with your real key
-SLIDE_JSON_PATH = "report_slides.json"
+GEMINI_API_KEY = "AIzaSyDOfZX-K1Zno0r6r61jZwHcSnfRFGCE5g8"
+PDF_PATH = "ltimindtree_annual_report.pdf"
 
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel(model_name="models/gemini-2.0-flash")
 
-# === Load structured slide content ===
-with open(SLIDE_JSON_PATH, "r", encoding="utf-8") as f:
-    report = json.load(f)
+# === Step 1: Extract full text from PDF with page numbers ===
+def extract_text_with_pages(pdf_path):
+    doc = fitz.open(pdf_path)
+    pages = []
+    for page_num, page in enumerate(doc, start=1):
+        text = page.get_text()
+        if text:
+            pages.append({"page": page_num, "text": text.strip()})
+    return pages
 
-# === Flatten content for vector embedding ===
+# === Load raw PDF text ===
+print("📄 Loading PDF text...")
+pages = extract_text_with_pages(PDF_PATH)
+
+# === Flatten pages for embedding ===
 chunks = []
 metas = []
-page_counter = 1
-for slide in report["slides"]:
-    for element in slide["elements"]:
-        text = " ".join(element["content"]) if isinstance(element["content"], list) else element["content"]
-        if text:
-            chunks.append(text)
-            metas.append({
-                "section": slide["title"],
-                "type": element["type"],
-                "page": page_counter
-            })
-        page_counter += 1  # Simulate page tracking (you can refine this if exact mapping is available)
+
+for page in pages:
+    text = page["text"]
+    if text:
+        chunks.append(text)
+        metas.append({
+            "section": "Full Report",
+            "type": "page",
+            "page": page["page"]
+        })
 
 # === Generate sentence embeddings ===
+print("🔍 Embedding text...")
 model_embed = SentenceTransformer("all-MiniLM-L6-v2")
 embeddings = model_embed.encode(chunks, convert_to_numpy=True)
 
@@ -41,7 +51,7 @@ index = faiss.IndexFlatL2(dim)
 index.add(embeddings)
 
 # === Retrieval Function ===
-def retrieve_top_k(query: str, top_k: int = 1):  # Return only top 1 source
+def retrieve_top_k(query: str, top_k: int = 1):  # Top 1 source page
     q_vec = model_embed.encode([query], convert_to_numpy=True)
     distances, indices = index.search(q_vec, top_k)
     results = []
@@ -59,7 +69,7 @@ You are an AI assistant analyzing a company's business report.
 
 Answer the following question using only the context below. Be specific, detailed, 
 and include any relevant figures, examples, or supporting data. If multiple facts are found, synthesize them into a full answer.
-Use at least 2 sentences unless the answer is numeric.
+Use at least 3 sentences unless the answer is numeric.
 
 Context:
 {context_text}
@@ -70,15 +80,17 @@ Question:
 
 # === Chatbot Function ===
 def ask_business_question(question: str):
-    top_chunks = retrieve_top_k(question, top_k=5)
+    top_chunks = retrieve_top_k(question, top_k=8)
     context = "\n\n".join([chunk["text"] for chunk in top_chunks])
     prompt = build_prompt(context, question)
 
     response = model.start_chat().send_message(prompt)
 
+    source_page = top_chunks[0]["meta"]["page"] if top_chunks else "Unknown"
     return {
         "answer": response.text.strip(),
-        "sources": top_chunks
+        "sources": top_chunks,
+        "page": source_page
     }
 
 # === Interactive Loop ===
@@ -90,9 +102,5 @@ if __name__ == "__main__":
             print("👋 Exiting. Have a great day!")
             break
         result = ask_business_question(user_question)
-        print("\n✅ Answer:\n", result["answer"])
-        print("\n📄 Page:")
-        for i in range(5):
-            print(f"- Page: {result['sources'][i]['meta']['page']}")
-        
+        print(f"\n✅ Answer:\n{result['answer']}\n\nSource: page {result['page']}")
         print("\n---\n")
