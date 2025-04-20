@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router-dom'
-import PDFUpload from '../Components/PDFUpload'
-import Header from '../Components/Header'
+import { useNavigate } from "react-router-dom";
+import PDFUpload from "../Components/PDFUpload";
+import Header from "../Components/Header";
 
 export default function SplashPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleFileUpload = (file: File) => {
-    console.log('Uploaded PDF:', file)
-    navigate('/loading')
-  }
+    console.log("Uploaded PDF:", file);
+    navigate("/loading");
+  };
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-cloud via-paleLavender to-mintWash animate-gradient">
@@ -23,8 +23,6 @@ export default function SplashPage() {
         </p>
         <PDFUpload onUpload={handleFileUpload} />
       </main>
-
-      
     </div>
-  )
+  );
 }

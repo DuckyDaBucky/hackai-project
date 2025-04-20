@@ -38,7 +38,7 @@ export default function Header() {
     <header className="w-full shadow-md px-6 py-2 flex justify-between items-center fixed top-0 left-0 z-50">
       {/* Left side: logo + name */}
       <div className="flex items-center gap-2">
-        <img src={logoSrc} alt="logo" className="w-8 h-8" />
+        <img src={logoSrc} alt="logo" className="w-8 h-8 filter invert" />
         <span className="text-xl font-bold">Alfred.AI</span>
       </div>
 
@@ -55,12 +55,6 @@ export default function Header() {
           className="hover:text-plum hover:scale-110 transition-transform duration-200"
         >
           About
-        </Link>
-        <Link
-          to="/technical"
-          className="hover:text-plum hover:scale-110 transition-transform duration-200"
-        >
-          Technical
         </Link>
         {user ? (
           <button
