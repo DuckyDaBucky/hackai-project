@@ -5,6 +5,7 @@ import ReportPage from './Pages/ReportPage'
 import AuthScreen from './Pages/AuthScreen'
 import AboutUsPage from './Pages/AboutUsPage'
 import MainLayout from './Layouts/MainLayout'
+import ReportLayout from './Layouts/ReportLayout'
 
 function App() {
   return (
@@ -13,9 +14,12 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<SplashPage />} />
           <Route path="/loading" element={<LoadingPage />} />
-          <Route path="/report" element={<ReportPage />} />
           <Route path="/auth" element={<AuthScreen />} />
           <Route path="/about" element={<AboutUsPage />} />
+        </Route>
+
+        <Route element={<ReportLayout />}>
+          <Route path="/report" element={<ReportPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
