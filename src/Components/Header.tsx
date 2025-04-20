@@ -1,21 +1,15 @@
 // src/Components/Header.tsx
 import { Link } from "react-router-dom";
+import logoSrc from "../assets/Logo.png";
 
 export default function Header() {
   return (
-    <header className="w-full bg-[#d5d8ec] shadow-lg px-12 py-5 flex justify-between items-center font-body">
-
-      {/* Left: Logo + Name */}
-      <div className="group flex items-center gap-2 cursor-pointer transition-transform duration-300 hover:scale-105 hover:brightness-110">
-      <img
-        src="/vite.svg"
-        alt="logo"
-        className="w-10 h-10 transition duration-300"
-      />
-      <span className="text-2xl font-heading font-bold text-darkBrown tracking-wide transition duration-300">
-        Alfred.AI
-      </span>
-    </div>
+    <header className="w-full bg-white shadow-md px-6 py-2 flex justify-between items-center fixed top-0 left-0 z-50">
+      {/* Left side: logo + name */}
+      <div className="flex items-center gap-2">
+        <img src="/vite.svg" alt="logo" className="w-8 h-8" />
+        <span className="text-xl font-bold">Alfred.AI</span>
+      </div>
 
       {/* Right: Navigation */}
       <nav className="flex gap-10 items-center text-darkBrown text-[1rem] font-medium">

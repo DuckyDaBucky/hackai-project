@@ -1,8 +1,6 @@
-import MainLayout from '../Layouts/MainLayout'
-import ScrollSection from '../Components/ScrollSection'
 import Sidebar from '../Components/Sidebar'
 import Chatbot from '../Components/Chatbot'
-import { motion } from 'framer-motion'
+import ScrollSection from '../Components/ScrollSection'
 import DynamicChart from '../Components/DynamicChart'
 import mockData from '../Data/mockReportData'
 

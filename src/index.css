@@ -22,3 +22,7 @@ html, body {
 }
 
 
+.invert-colors {
+  filter: invert(1);
+}
+
