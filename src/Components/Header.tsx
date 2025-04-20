@@ -3,22 +3,31 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header className="w-full bg-white shadow-md px-6 py-2 flex justify-between items-center fixed top-0 left-0 z-50">
-      
-      {/* Left side: logo + name */}
-      <div className="flex items-center gap-2">
-        <img src="/vite.svg" alt="logo" className="w-8 h-8" />
-        <span className="text-xl font-bold">Alfred.AI</span>
-      </div>
+    <header className="w-full bg-[#d5d8ec] shadow-lg px-12 py-5 flex justify-between items-center font-body">
 
-      {/* Right side: nav links + login */}
-      <div className="flex items-center gap-8 text-gray-600 font-medium">
-        <Link to="/about" className="hover:text-black">About Us</Link>
-        <Link to="/technical" className="hover:text-black">Technical</Link>
-        <Link to="/auth" className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">
-          Login
+      {/* Left: Logo + Name */}
+      <div className="group flex items-center gap-2 cursor-pointer transition-transform duration-300 hover:scale-105 hover:brightness-110">
+      <img
+        src="/vite.svg"
+        alt="logo"
+        className="w-10 h-10 transition duration-300"
+      />
+      <span className="text-2xl font-heading font-bold text-darkBrown tracking-wide transition duration-300">
+        Alfred.AI
+      </span>
+    </div>
+
+      {/* Right: Navigation */}
+      <nav className="flex gap-10 items-center text-darkBrown text-[1rem] font-medium">
+        <Link to="/" className="hover:text-plum hover:scale-110 transition-transform duration-200">Home</Link>
+        <Link to="/about" className="hover:text-plum hover:scale-110 transition-transform duration-200">About</Link>
+        <Link to="/technical" className="hover:text-plum hover:scale-110 transition-transform duration-200">Technical</Link>
+        <Link to="/auth">
+          <button className="bg-paleLavender text-white text-sm px-6 py-2 rounded-md shadow-md hover:bg-plum transition">
+            Login
+          </button>
         </Link>
-      </div>
+      </nav>
     </header>
   );
 }

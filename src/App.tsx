@@ -13,13 +13,11 @@ function App() {
       future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
     >
       <Routes>
-        <Route element={<MainLayout />}>
           <Route path="/" element={<SplashPage />} />
           <Route path="/loading" element={<LoadingPage />} />
           <Route path="/report" element={<ReportPage />} />
           <Route path="/auth" element={<AuthScreen />} />
           <Route path="/about" element={<AboutUsPage />} />
-        </Route>
         {/* Example:
         <Route path="/about" element={<AboutUsPage />} /> */}
       </Routes>

@@ -1,5 +1,6 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,14 +9,17 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        heading: ['Poppins', 'sans-serif'],
+        body: ['Open Sans', 'sans-serif'],
       },
       colors: {
-        cloud: '#f5f7fa',
-        paleLavender: '#F0EEF9',
-        mintWash: '#EEF7F2',
-        graySlate: '#4B5563',
+        cloud: '#94a3b8',         // steel gray-blue
+        paleLavender: '#a093d6',  // soft violet
+        mintWash: '#7fb8a6',      // deep mint
+        graySlate: '#1e293b',     // strong contrast for text
       },
     },
   },
   plugins: [],
-} 
+}
+
