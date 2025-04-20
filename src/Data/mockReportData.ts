@@ -1,92 +1,70 @@
-const mockReportData = {
+const mockData = {
   companyOverview: {
-    name: "LTIMindtree",
-    founded: "2022",
+    description:
+      "LTIMindtree is a global technology consulting and digital solutions company with 81,000+ employees, operating across 38 countries, and boasting a diverse and unified culture. The company emerged from a merger of equals to drive transformation at scale for global clients.",
     employees: "81,000+",
-    headquarters: "Mumbai, India",
-    countriesPresent: 37,
+    countriesPresent: "38",
     exportsPercent: "94%",
-    description: `LTIMindtree is a global technology consulting and digital solutions company that enables enterprises across industries to reimagine business models, accelerate innovation, and maximize growth by harnessing digital technologies.`,
   },
 
   leadership: {
-    chairmanQuote:
-      "Our future is limitless. We are shaping a sustainable tomorrow through technology and purpose.",
-    ceoQuote:
-      "Together, we are pioneering digital transformation with compassion, creativity, and capability.",
-    partnerships: ["AWS", "Google", "SAP", "Databricks", "HPE"],
+    chairmanQuote: "“Our future is limitless. We shape a sustainable tomorrow.”",
+    ceoQuote: "“We pioneer digital transformation with compassion and capability.”",
+    partnerships: ["AWS", "Microsoft", "Google", "Oracle", "ServiceNow"],
   },
 
   financials: {
     revenue: {
-      FY23: 319755,
-      FY24: 342534,
-      summary: "Revenue increased due to strong growth across BFSI, manufacturing, and energy verticals along with international expansion."
+      FY24: 355170,
+      FY23: 331490,
+      summary: "7% YoY growth driven by strong digital transformation demand and robust delivery efficiency."
     },
     profitAfterTax: {
-      FY23: 42482,
-      FY24: 44859,
-      summary: "Net profit grew modestly, supported by improved operational efficiency and margin optimization despite inflationary pressures."
+      FY24: 45846,
+      FY23: 44000
     },
     comprehensiveIncome: {
-      FY23: 35648,
-      FY24: 49708,
-      summary: "A significant boost from investment income and one-time strategic gains contributed to higher comprehensive income."
+      FY24: 42000,
+      FY23: 39000,
+      summary: "Steady increase attributed to cost optimization and service line expansion."
     },
-    returnOnEquity: "25%",
-    basicEPS: "₹151.60",
+    returnOnEquity: "25.0%",
     barChartData: [
-      { label: "Revenue", FY23: 319755, FY24: 342534 },
-      { label: "PAT", FY23: 42482, FY24: 44859 },
+      { label: "Revenue", FY23: 331490, FY24: 355170 },
+      { label: "PAT", FY23: 44000, FY24: 45846 },
       { label: "Total Income", FY23: 324771, FY24: 349633 }
     ],
   },
 
   capitalStructure: {
-    netWorth: 200264,
-    cashInvestments: 115596,
-    rAndD: 746,
-    greenCapex: 3081,
-    patents: 2,
-    summary: "The company's strong net worth and cash reserves reflect capital discipline, while strategic investments in R&D and green infra demonstrate futureproofing."
+    summary:
+      "LTIMindtree maintains a multi-capital strategy with INR 200,264M net worth, INR 115,596M cash & investments, and diversified capital exposure across financial, intellectual, and human assets.",
   },
 
   esg: {
     energyUsedGJ: 198654,
-    waterUsedML: 333.7,
-    wasteRecycledPercent: 92.14,
+    waterUsedML: 333.724,
     carbonOffsetTons: 1200,
-    csrSpend: 807,
-    livesImpactedFY24: 598698,
-    livesImpactedTotal: "1.59M+",
-    summary: "Sustainability gains were driven by campus-wide waste initiatives, targeted CSR partnerships, and an ongoing shift to renewable sources."
+    wasteRecycledPercent: 92.14,
+    summary:
+      "Significant reduction in environmental impact through water-saving strategies, green buildings, and investment in carbon offset projects."
   },
 
   stakeholderImpact: {
-    employees: 81000,
-    suppliers: 6700,
-    boardAttendance: "98%",
-    boardMedianAge: 64,
-    academicPartners: true,
-    summary: "High engagement and transparency across all stakeholder groups reinforced LTIMindtree’s reputation for inclusive, ethical operations."
+    summary:
+      "Clients rated satisfaction at 5.85/6. LTIMindtree impacted 598,698 lives in FY24 through CSR, and invested ₹807M toward community and sustainability programs.",
+    customerSatisfaction: 5.85,
+    employeeLearningHours: 4.37,
+    activeClients: 738,
   },
 
   innovation: {
-    focusAreas: [
-      "Adaptive AI",
-      "GenAI",
-      "Cloud-native platforms",
-      "Cybersecurity",
-      "Edge Computing",
-      "Zero Trust Security"
-    ],
-    externalMarketGrowth: {
-      cybersecurity: "USD 183B (2024)",
-      cloud: "USD 678.8B (2024)",
-      esgTech: "USD 19.8B → 83.6B by 2032"
-    },
-    summary: "Strategic focus on scalable tech like GenAI and Zero Trust frameworks reflects market demand and positions LTIMindtree for hypergrowth."
+    summary:
+      "Focused innovation across AI, cloud, analytics, and cybersecurity with $208B market in cybersecurity and $678B in public cloud spending in 2024. Strategic alliances accelerated go-to-market capabilities.",
+    strategicAlliances: ["Snowflake", "AWS", "ServiceNow", "Google Cloud", "Microsoft"],
+    patents: 20,
+    platforms: ["Fosfor", "Infinity", "Canvas", "NXT"],
   }
-}
+};
 
-export default mockReportData
+export default mockData;
