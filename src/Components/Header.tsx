@@ -1,5 +1,6 @@
 // src/Components/Header.tsx
 import { Link } from "react-router-dom";
+import logoSrc from "../assets/Logo.png";
 
 export default function Header() {
   return (
@@ -7,7 +8,7 @@ export default function Header() {
       
       {/* Left side: logo + name */}
       <div className="flex items-center gap-2">
-        <img src="/vite.svg" alt="logo" className="w-8 h-8" />
+        <img src={logoSrc} alt="logo" className="w-10 h-10 invert-colors" />
         <span className="text-xl font-bold">Alfred.AI</span>
       </div>
 

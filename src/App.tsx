@@ -1,17 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SplashPage from "./Pages/SplashPage";
-import LoadingPage from "./Pages/LoadingPage";
-import ReportPage from "./Pages/ReportPage";
-import AuthScreen from "./Pages/AuthScreen";
-import AboutUsPage from "./Pages/AboutUsPage";
-import MainLayout from "./Layouts/MainLayout";
-// Add TechnicalPage and AboutUsPage if you have them
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import SplashPage from './Pages/SplashPage'
+import LoadingPage from './Pages/LoadingPage'
+import ReportPage from './Pages/ReportPage'
+import AuthScreen from './Pages/AuthScreen'
+import AboutUsPage from './Pages/AboutUsPage'
+import MainLayout from './Layouts/MainLayout'
 
 function App() {
   return (
-    <BrowserRouter
-      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-    >
+    <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<SplashPage />} />
@@ -20,11 +17,9 @@ function App() {
           <Route path="/auth" element={<AuthScreen />} />
           <Route path="/about" element={<AboutUsPage />} />
         </Route>
-        {/* Example:
-        <Route path="/about" element={<AboutUsPage />} /> */}
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
