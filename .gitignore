@@ -25,3 +25,8 @@ dist-ssr
 
 #dev
 .env
+.venv
+# Ignore uploads directory
+/server/uploads
+/server/__pycache__
+
