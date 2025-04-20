@@ -1,7 +1,34 @@
 // src/Pages/AboutUs.tsx
 import Header from '../Components/Header'
+import AliImage from '../assets/Ali.jpg'
+import HasnainImage from '../assets/Hasnain.jpg'
+import KabirImage from '../assets/Kabir.jpg'
+import RamziImage from '../assets/Ramzi.jpg'
 
 export default function AboutUs() {
+  const founders = [
+    {
+      name: 'Ali',
+      quote: "A smooth sea never made a skilled sailor",
+      image: AliImage,
+    },
+    {
+      name: 'Hasnain',
+      quote: "AI is definitely not replacing me",
+      image: HasnainImage,
+    },
+    {
+      name: 'Ramzi',
+      quote: "The only way to do great work is to love what you do.",
+      image: RamziImage,
+    },
+    {
+      name: 'Kabir',
+      quote: "In the midst of chaos, there is also opportunity",
+      image: KabirImage,
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -15,28 +42,7 @@ export default function AboutUs() {
 
         {/* 🟣 Quotes from Founders (with headshots) */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mb-20">
-            {[
-                {
-                    name: 'Founder 1',
-                    quote: "Tech isn't just tools. It's the bridge between vision and impact.",
-                    image: '/founders/john-doe.jpg',
-                },
-                {
-                    name: 'Founder 2',
-                    quote: "I build not just for users — but for the future of work.",
-                    image: '/founders/john-doe.jpg',
-                },
-                {
-                    name: 'Founder 3',
-                    quote: "Turning dense data into human decisions — that's the mission.",
-                    image: '/founders/john-doe.jpg',
-                },
-                {
-                    name: 'Founder 4',
-                    quote: "Every line of code is a step toward change.",
-                    image: '/founders/john-doe.jpg', 
-                },
-            ].map((founder, index) => (
+            {founders.map((founder, index) => (
                 <div
                     key={index}
                     className="bg-white shadow-md rounded-lg p-6 border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center text-center"
@@ -67,9 +73,8 @@ export default function AboutUs() {
         <section className="text-center mt-20">
           <h2 className="text-3xl font-semibold mb-4">Where We Get Our Inspiration</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            This project is inspired by the rise of Generative AI and the need to make complex business documents human-readable.
-            From the elegance of tools like ChatGPT and Notion AI to the power of enterprise data, we’re blending creativity with precision.
-            Our goal? Making finance feel frictionless.
+            Inspired by Batman's butler, Alfred, who manages complexity behind the scenes, Alfred.AI simplifies dense financial documents. 
+            Our goal is to handle the clutter, allowing users to focus on the key insights that truly matter in financial research.
           </p>
         </section>
       </main>
