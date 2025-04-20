@@ -1,63 +1,112 @@
 {
   "slides": [
     {
-      "slide": "Financial Highlights (FY24)",
+      "slide": "Financial Highlights - FY24",
       "elements": [
         {
           "bullets": [
-            "Revenue: INR 355,170 Million, a 7.0% year-over-year growth.",
-            "Profit After Tax (PAT): INR 45,846 Million, a 4.0% year-over-year growth.",
-            "Return on Equity (ROE): 25.0%",
-            "Customer Satisfaction Rating: 5.85"
+            "Revenue: INR 355,170 Million",
+            "  Year-over-year growth of 7.0%.",
+            "Profit After Tax (PAT): INR 45,846 Million",
+            "  Year-over-year growth of 4.0%.",
+            "Return on Equity (ROE): 25.0%"
           ]
         },
         {
           "bullets": [
-            "CSR Spend: INR 807 Million supporting 598,698 livelihoods.",
-            "Energy Consumption: 198,654 GJ.",
-            "Water Consumption: 333.724 ML.",
-            "Waste Recycled: 92.14%."
+            "CSR Spend: INR 807 Million",
+            "  Focused on improving education, healthcare, and economic conditions.",
+            "Customer Satisfaction Rating: 5.85",
+            "  Measured across satisfaction, loyalty, advocacy, and business value.",
+            "Global Presence: 38 countries"
           ]
         }
       ]
     },
     {
-      "slide": "Workforce & Learning",
+      "slide": "Operational Performance",
+      "elements": [
+        {
+          "bullets": [
+            "Total Active Clients: 738",
+            "  Reflects a broad and diverse client base.",
+            "New Client Additions: 102",
+            "Demonstrates successful business development efforts.",
+            "ISO Certifications: Facilities drive quality and information security"
+          ]
+        },
+        {
+          "bullets": [
+            "Patent Portfolio: 20",
+            "  Reflects the company's commitment to innovation.",
+            "Core Platforms: 4",
+            "  Focused on Fosfor, Infinity, Canvas, and NXT.",
+            "Digital Learning Platform: 15,000+ courses and assessments."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Employee Engagement and Development",
       "elements": [
         {
           "bullets": [
             "Total Employees: 81,000+",
-            "Female Employees: 30.7% of the workforce.",
-            "142 Self-Identified PWD, 98 Self-Identified LGBTQ+, and 86 Self-Identified Veterans",
-            "101 Nationalities represented among employees."
+            "Female Employees: 30.7%",
+            "  Focus on increasing gender diversity.",
+            "Nationalities Represented: 101",
+            "  Highlights a global and diverse workforce."
           ]
         },
         {
           "bullets": [
-            "Total Learning Hours: 4.37 Million.",
-            "Associates Gaining New Skills: 97%.",
-            "Average Learning Per Employee: 6.5 days.",
-            "Digital Learning Platform: Shoshin School offering 15,000+ courses and assessments."
+            "Average Learning per Employee: 6.5 days",
+            "Total Learning Hours: 4.37 Million",
+            "Associates Gaining New Skills: 97%",
+            "  Emphasizes commitment to continuous learning.",
+            "Attrition Rate: 14.4%",
+            "  Multi-pronged approach towards workforce retention."
           ]
         }
       ]
     },
     {
-      "slide": "Global Presence & Clientele",
+      "slide": "ESG Performance",
       "elements": [
         {
           "bullets": [
-            "Global Presence: Operations in 38 countries.",
-            "Total Active Clients: 738.",
-            "New Client Additions: 102.",
-            "Key Stakeholders: Clients, Employees, Investors & Shareholders, Suppliers, Communities & NGOs, Government & Regulatory Bodies, Industry Bodies, Media, Academic Institutions."
+            "Energy Consumption: 198,654 GJ",
+            "Water Consumption: 333.724 ML",
+            "Waste Recycled: 92.14%",
+            "  Focus on sustainable practices.",
+            "Investment in Green Buildings: INR 3,081.5 Million"
           ]
         },
         {
           "bullets": [
-            "Export Contribution: 94% of total turnover from exports.",
-            "National Locations: Business activities in 9 states in India.",
-            "International Locations: Business activities in 37 countries globally."
+            "CSR Beneficiaries (FY24): 598,698",
+            "CSR Beneficiaries (Cumulative): 1,598,698 (from FY19)",
+            "74% of India offices operate from certified Green Buildings",
+            "Emphasizing need for a holistic sustainability strategy."
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Stakeholder Engagement",
+      "elements": [
+        {
+          "bullets": [
+            "Customer Satisfaction: Rating of 5.85.",
+            "Employee Motivation: Key focus area.",
+            "Investor Relations: Active engagement through multiple channels."
+          ]
+        },
+        {
+          "bullets": [
+            "Government Compliance: Emphasis on 100% regulatory compliance.",
+            "Supplier Partnerships: Strengthening for sustainability and ethical practices.",
+            "Community Support: Impacted 598,698 through CSR programs."
           ]
         }
       ]
@@ -67,106 +116,35 @@
       "elements": [
         {
           "bullets": [
-            "Premier Tier Partner for Amazon Web Services (AWS).",
-            "13,400+ accredited cloud experts and 1,855+ Certified AWS Professionals.",
-            "Awarded Sustainability Partner of the Year at AWS re:Invent 2023.",
-            "Strategic agreement with AWS on Gen AI solutions."
+            "AWS: Premier Tier Partner, awarded Sustainability Partner of the Year.",
+            "Microsoft: Strengthened credentials, Gen AI Center of Excellence inaugurated.",
+            "Google Cloud Platform (GCP): Strategic partnership with investment in GCP CoE."
           ]
         },
         {
           "bullets": [
-            "System Integrator and Premier Partner for Google Cloud Platform (GCP) and Google Workspace.",
-            "Data Analytics specialization, 37 Expertise and has over 800 GCP certified associates.",
-            "Strategic vendor to Google\u2019s \u2018Professional Services Organization\u2019 (PSO).",
-            "Scaling up investments to ramp up the \u2018GCP CoE\u2019."
+            "IBM: First Indian GSI to join IBM Quantum Network, awarded IBM Partner Plus Award.",
+            "SAP: Global Strategic Services Partner, won SAP Pinnacle Award.",
+            "ServiceNow: Elite Partner, awarded Emerging Service Provider Americas."
           ]
         },
         {
           "bullets": [
-            "IBM\u2019s GSI and Platinum Business Partner with global coverage.",
-            "First Indian Global System Integrator (GSI) to join the IBM Quantum Network.",
-            "IBM Partner Plus Award 2023 in the Digital Labor category for the APAC geography.",
-            "Strategic engagement with IBM on watsonx portfolio around .data, .ai and .gov offerings."
+            "Snowflake: Elite Partner, recognized as Global System Integrator Innovation Partner of the Year 2023.",
+            "Pega: Global Elite Partner, has built Gen AI based customer service solution.",
+            "Adobe: Global Platinum Solutions Partner"
           ]
         }
       ]
     },
     {
-      "slide": "Sustainability Initiatives",
+      "slide": "Key Growth Opportunities",
       "elements": [
         {
           "bullets": [
-            "Focus on a holistic sustainability strategy.",
-            "ESG Solutions powered by ServiceNow and the NXT platform.",
-            "Integration of data collection from multiple systems for real-time tracking and reporting.",
-            "ESG targets and performance reporting are a key priority."
-          ]
-        },
-        {
-          "bullets": [
-            "Aligned with ESG goals, emphasizing transition and carbon-offset projects.",
-            "Energy-saving power management system in place.",
-            "Adoption of conservation strategies across facilities.",
-            "Implemented 3R (Reduce, Reuse and Recycle) approach, rainwater harvesting, and wastewater recycling."
-          ]
-        }
-      ]
-    },
-    {
-      "slide": "Digital Engineering & AI",
-      "elements": [
-        {
-          "bullets": [
-            "Specializing in Application Migration and Modernization using cloud technology.",
-            "Offering Outsourced Product Development and Engineering services.",
-            "Platform Modernization and Engineering expertise for streamlined systems.",
-            "Focus on adoption of Cloud Technology for businesses."
-          ]
-        },
-        {
-          "bullets": [
-            "Expertise in developing, integrating, and managing AI and analytics solutions.",
-            "Offering consulting expertise to expedite and optimize AI and analytics transition.",
-            "Digital experience services consisting of e-commerce to digital marketing and IP-driven product engineering.",
-            "Leveraging the power of AI, Mixed Reality (MR), and Virtual Reality (VR)."
-          ]
-        }
-      ]
-    },
-    {
-      "slide": "Equity & Liabilities",
-      "elements": [
-        {
-          "bullets": [
-            "Equity Share Capital: INR 296 Million.",
-            "Other Equity (Other Reserves): INR 14,266 Million.",
-            "Other Equity (Retained Earnings): INR 178,422 Million.",
-            "Total Equity: INR 192,985 Million."
-          ]
-        },
-        {
-          "bullets": [
-            "Non-Current Liabilities: INR 16,900 Million.",
-            "Current Liabilities: INR 54,692 Million.",
-            "Total Liabilities: INR 71,592 Million.",
-            "Total Equity and Liabilities: INR 264,577 Million."
-          ]
-        }
-      ]
-    },
-    {
-      "slide": "Business Overview",
-      "elements": [
-        {
-          "bullets": [
-            "Business activity: Computer programming, consultancy, and related activities.",
-            "Turnover from Information and communication (J6, J8): 100%",
-            "Services: IT and IT-enabled services including digital transformation services, enterprise solutions, technology consulting."
-          ]
-        },
-        {
-          "bullets": [
-            "Number of locations: 39 National offices, 77 international offices, 1 international datacenter."
+            "Cloud Computing: Public cloud services spending forecasted to grow 20.4% to USD 678.8 Billion in 2024.",
+            "Cybersecurity: Global cybersecurity industry projected to reach USD 183.10 Billion in 2024.",
+            "Green Technology and Sustainability: Market estimated at USD 19.83 Billion in 2024, growing to USD 83.59 Billion by 2032."
           ]
         }
       ]

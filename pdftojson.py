@@ -43,6 +43,7 @@ Each slide should:
 - Each element should be a mini-section with 4 to 6 high-quality bullet points
 - Emphasize numbers, percentages, rankings, or KPIs wherever relevant
 
+Do NOT use Markdown formatting (no asterisks, bold, italics, or backticks).
 Return valid JSON with this structure:
 {{
   "slides": [
