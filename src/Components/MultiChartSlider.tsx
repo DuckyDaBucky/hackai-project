@@ -26,21 +26,19 @@ export default function MultiChartSlider({ groups }: Props) {
     const atFirst = index === 0
     const atLast = index === groups.length - 1
 
-    // Only intercept if not at edges
     if ((goingDown && !atLast) || (goingUp && !atFirst)) {
       e.preventDefault()
       if (goingDown && !atLast) setIndex(i => i + 1)
-      if (goingUp && !atFirst) setIndex(i => i - 1)
+      else if (goingUp && !atFirst) setIndex(i => i - 1)
     }
   }
 
   useEffect(() => {
-    const current = containerRef.current
-    if (!current) return
-
+    const node = containerRef.current
+    if (!node) return
     const opts = { passive: false } as AddEventListenerOptions
-    current.addEventListener('wheel', handleScroll, opts)
-    return () => current.removeEventListener('wheel', handleScroll)
+    node.addEventListener('wheel', handleScroll, opts)
+    return () => node.removeEventListener('wheel', handleScroll)
   }, [index])
 
   return (
@@ -48,10 +46,10 @@ export default function MultiChartSlider({ groups }: Props) {
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.6 }}
+          exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 0.5 }}
         >
           <MultiChartSlide charts={groups[index].charts} />
         </motion.div>

@@ -22,7 +22,6 @@ export default function ScrollSection({
       ref={ref}
       className={`snap-start snap-always h-screen flex flex-col justify-center items-center px-4 md:px-20 py-16 transition-colors duration-700 ${backgroundColor}`}
     >
-      {/* Title */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -36,7 +35,6 @@ export default function ScrollSection({
         )}
       </motion.div>
 
-      {/* Content */}
       <motion.div
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
