@@ -97,7 +97,7 @@ const Chatbot: React.FC<Props> = ({ theme }) => {
         // Extract the answer from the response format
         apiResponse = {
           text:
-            `${data.answer}\nsource page: ${data.page}` ||
+            `${data.answer}\n\nSource: Page ${data.page}\n${data.confidence}` ||
             "Sorry, I couldn't get a proper response.",
         };
       } catch (error) {
