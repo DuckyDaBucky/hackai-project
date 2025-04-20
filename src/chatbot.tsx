@@ -72,12 +72,44 @@ const Chatbot: React.FC<Props> = ({ theme }) => {
     setIsLoading(true);
 
     setTimeout(async () => {
-      const apiResponse = await chat.sendMessage({
-        message: userMessage.text,
-      });
+      // const apiResponse = await chat.sendMessage({
+      //   message: userMessage.text,
+      // });
+
+      let apiResponse = {
+        text: "Sorry, I couldn't get a response.",
+      };
+
+      try {
+        const response = await fetch("http://127.0.0.1:8000/ask", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ question: userMessage.text }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        // Extract the answer from the response format
+        apiResponse = {
+          text:
+            `${data.answer}\nsource page: ${data.page}` ||
+            "Sorry, I couldn't get a proper response.",
+        };
+      } catch (error) {
+        console.error("Error fetching response:", error);
+        apiResponse = {
+          text: "Sorry, I couldn't connect to the server.",
+        };
+      }
+
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: apiResponse?.text ?? "Sorry, I couldn't get a response.",
+        text: apiResponse.text,
         sender: "bot",
         timestamp: new Date().toISOString(),
       };
@@ -158,7 +190,9 @@ const Chatbot: React.FC<Props> = ({ theme }) => {
   };
 
   return (
-    <div className={`flex flex-col h-screen ${theme} transition-all duration-300`}>
+    <div
+      className={`flex flex-col h-screen ${theme} transition-all duration-300`}
+    >
       {/* Header */}
       <header className="border-b border-black/10 py-4 px-6">
         <h1 className="text-lg font-medium">AI Assistant</h1>
@@ -185,7 +219,9 @@ const Chatbot: React.FC<Props> = ({ theme }) => {
                   />
                 </svg>
               </div>
-              <h2 className="text-2xl font-medium">How can I help you today?</h2>
+              <h2 className="text-2xl font-medium">
+                How can I help you today?
+              </h2>
               <p className="text-gray-600">Ask me anything about the data.</p>
             </div>
           ) : (
