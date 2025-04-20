@@ -1,13 +1,12 @@
-import { ReactNode } from 'react'
+// src/Layouts/MainLayout.tsx
+import { Outlet } from 'react-router-dom'
 
-type Props = {
-  children: ReactNode
-}
-
-export default function MainLayout({ children }: Props) {
+export default function MainLayout() {
   return (
     <div className="min-h-screen font-sans">
-      {children}
+      <main className="mt-24 px-6">
+        <Outlet />
+      </main>
     </div>
   )
 }
