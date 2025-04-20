@@ -8,6 +8,7 @@ import MainLayout from './Layouts/MainLayout'
 // Add TechnicalPage and AboutUsPage if you have them
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
@@ -23,6 +24,7 @@ function App() {
       </Routes>
     </BrowserRouter>
   )
+
 }
 
 export default App
