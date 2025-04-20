@@ -65,7 +65,7 @@ export default function AboutUs() {
         {/* 🟢 Connect Button */}
         <div className="flex justify-center">
           <a
-            href="mailto:team@finflow.com"
+            href="https://linktr.ee/MIGDevelopment"
             className="mt-4 inline-block bg-black text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-gray-800 transition"
           >
             Connect with Us
