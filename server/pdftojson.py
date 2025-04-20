@@ -7,8 +7,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # === CONFIG ===
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-PDF_PATH = "server/ltimindtree_annual_report.pdf"
+# GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+PDF_PATH = "ltimindtree_annual_report.pdf"
+
 OUTPUT_PATH = "report_slides_condensed.json"
 #PDF_PATH = os.path.abspath("ltimindtree_annual_report.pdf")
 

@@ -1,0 +1,132 @@
+{
+  "slides": [
+    {
+      "slide": "Financial Highlights - FY24",
+      "elements": [
+        {
+          "bullets": [
+            "Revenue: INR 355,170 Million",
+            "  - Indicating a robust Y-o-Y growth of 7.0%",
+            "Profit After Tax (PAT): INR 45,846 Million",
+            "  - Reflecting a growth of 4.0% compared to the previous year",
+            "Return on Equity (ROE): 25.0%"
+          ]
+        },
+        {
+          "bullets": [
+            "CSR Spend: INR 807 Million",
+            "  - Demonstrating commitment to social responsibility",
+            "Customer Satisfaction Rating: 5.85",
+            "  - Highlights strong customer relations",
+            "Energy Consumption: 198,654 GJ",
+            "Water Consumption: 333.724 ML"
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Workforce & Learning",
+      "elements": [
+        {
+          "bullets": [
+            "Total Employees: 81,000+",
+            "  - Demonstrates LTIMindtree's talent strength",
+            "Female Employees: 30.7%",
+            "  - Shows commitment to gender diversity.",
+            "Average Learning Per Employee: 6.5 days",
+            " - Commitment to continuous employee development"
+          ]
+        },
+        {
+          "bullets": [
+            "Total Learning Hours: 4.37 Million",
+            "Associates Gaining New Skills: 97%",
+            " - Underscoring a proactive approach to skill enhancement",
+            "Courses and Assessments offered: 15,000+",
+            " - Large library of resources to assist employees"
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Global Presence & Customer Base",
+      "elements": [
+        {
+          "bullets": [
+            "Global Presence: 38 Countries",
+            "  - Reflecting widespread market reach",
+            "ISO Certifications: Drive Quality, Information Security, Health, and Safety",
+            "Total Active Clients: 738",
+            "Customer Experience Index: Satisfaction \u2013 5.85 | Loyalty \u2013 5.80 | Advocacy \u2013 5.96 | Business Value \u2013 5.66"
+          ]
+        },
+        {
+          "bullets": ["New Client Additions: 102"]
+        }
+      ]
+    },
+    {
+      "slide": "R&D and Innovation",
+      "elements": [
+        {
+          "bullets": [
+            "R&D Expenditure: INR 746 Million",
+            " - Dedication to innovation and technological advancement",
+            "Patent Portfolio: 20",
+            " - Solidifying Intellectual Property assets",
+            "Core Platforms (FOSFOR, INFINITY, CANVAS, NXT)",
+            " - Driving innovation and efficiency"
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "ESG Performance",
+      "elements": [
+        {
+          "bullets": [
+            "Waste Recycled: 92.14%",
+            "  - Emphasizing environmental stewardship",
+            "CSR Beneficiaries: 598,698 for FY24",
+            "Low-Carbon Business Model",
+            "  - Transition and carbon-offset projects"
+          ]
+        },
+        {
+          "bullets": [
+            "Energy saving - Power Management System",
+            "Conservation Strategies being adopted",
+            "17 LEED certified campuses across India"
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Board Governance",
+      "elements": [
+        {
+          "bullets": [
+            "Median Director Age: 64 years",
+            "Average Tenure of Independent Directors: 3 years",
+            "Average Attendance Rate at Board Meetings: 98%",
+            " - Demonstrating active participation and governance"
+          ]
+        }
+      ]
+    },
+    {
+      "slide": "Strategic Partnerships",
+      "elements": [
+        {
+          "bullets": [
+            "Premier Tier Partner for Amazon Web Services (AWS)",
+            "Microsoft credentials include: Azure Expert MSP, 11 Specializations, Solution Partner Designations, Dedicated Microsoft Business Unit",
+            "System Integrator and Premier Partner for Google Cloud Platform (GCP) and Google Workspace",
+            "Global Platinum Solutions Partner for Adobe",
+            "Elite Partner of ServiceNow"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -17,6 +17,7 @@ from pathlib import Path
 
 load_dotenv()
 
+# Export the app directly for better import compatibility
 app = FastAPI()
 
 # Add CORS middleware
@@ -29,7 +30,7 @@ app.add_middleware(
 )
 
 # === CONFIGURATION ===
-GEMINI_API_KEY = os.getenv("VITE_GOOGLE_AI_STUDIO_KEY")
+# GEMINI_API_KEY = os.getenv()
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'pdf'}
 
