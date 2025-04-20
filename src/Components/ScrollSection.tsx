@@ -4,7 +4,6 @@ type Props = {
   title: string
   backgroundColor?: string
   children: ReactNode
-  linger?: boolean
 }
 
 export default function ScrollSection({
