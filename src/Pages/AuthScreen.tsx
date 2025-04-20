@@ -1,23 +1,26 @@
-// export default Login;
-import React, { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { supabase } from "../supabaseClient"
+import { useNavigate, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
+import logoSrc from "../assets/Logo.png"
 
-const Login: React.FC = () => {
-  const [isLogin, setIsLogin] = useState(true);
+
+export default function AuthScreen() {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [isLogin, setIsLogin] = useState(true)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     confirmPassword: "",
-  });
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  })
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (errorMessage) {
-      const timer = setTimeout(() => {
-        setErrorMessage(null);
-      }, 3000);
-      return () => clearTimeout(timer);
+      const timer = setTimeout(() => setErrorMessage(null), 3000)
+      return () => clearTimeout(timer)
     }
   }, [errorMessage]);
 
@@ -53,12 +56,46 @@ const Login: React.FC = () => {
     }
   };
 
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+
+    if (!isLogin && formData.password !== formData.confirmPassword) {
+      setErrorMessage("Passwords do not match")
+      setLoading(false)
+      return
+    }
+
+    try {
+      let redirectPath = "/"
+      if (location.state?.fromLoading) redirectPath = "/report"
+
+      const { data, error } = isLogin
+        ? await supabase.auth.signInWithPassword({
+            email: formData.email,
+            password: formData.password,
+          })
+        : await supabase.auth.signUp({
+            email: formData.email,
+            password: formData.password,
+          })
+
+      if (error) throw error
+      if (data.session || data.user) navigate(redirectPath)
+    } catch (err: any) {
+      setErrorMessage(err.message || "Authentication failed")
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-cloud font-body text-graySlate">
@@ -67,7 +104,7 @@ const Login: React.FC = () => {
           {/* Left side - Branding */}
           <div className="hidden lg:flex w-1/2 text-white p-10 flex-col justify-center items-start">
             <div className="flex items-center gap-3">
-              <img src="/vite.svg" alt="logo" className="w-10 h-10" />
+              <img src={logoSrc} alt="logo" className="w-10 h-10" />
               <h1 className="text-3xl font-bold font-heading text-graySlate hover:scale-105 transition-transform duration-300 cursor-pointer">Alfred.AI</h1>
             </div>
           </div>
@@ -118,9 +155,16 @@ const Login: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full bg-cloud text-graySlate py-3 rounded-md shadow hover:bg-paleLavender transition"
+                disabled={loading}
+                className="w-full bg-cloud text-graySlate py-3 rounded-md shadow hover:bg-paleLavender transition" ${
+                  loading ? "opacity-60 cursor-not-allowed" : ""
+                }`}
               >
-                {isLogin ? "Sign In" : "Create Account"}
+                {loading
+                  ? "Loading..."
+                  : isLogin
+                  ? "Sign In"
+                  : "Create Account"}
               </button>
             </form>
 
@@ -128,7 +172,10 @@ const Login: React.FC = () => {
               onClick={() => setIsLogin(!isLogin)}
               className="mt-6 text-center text-sm text-plum hover:text-plum/80 cursor-pointer"
             >
-              {isLogin ? "Need an account? Sign up" : "Already have an account? Sign in"}
+
+              {isLogin
+                ? "Need an account? Sign up"
+                : "Already have an account? Sign in"}
             </p>
 
             {errorMessage && (
@@ -157,4 +204,40 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+
+      {/* Footer */}
+      <footer className="w-full text-center text-sm text-graySlate/70 py-6 bg-cloud">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-2">
+          <p>&copy; 2025 Alfred.AI. All rights reserved.</p>
+          <p>
+            Questions?{" "}
+            <a
+              href="mailto:support@alfred.ai"
+              className="text-plum hover:underline"
+            >
+              Contact us
+            </a>
+          </p>
+          <p>
+            Connect:{" "}
+            <a
+              href="https://linkedin.com/in/alfred-ai"
+              target="_blank"
+              className="text-plum hover:underline"
+            >
+              LinkedIn
+            </a>{" "}
+            |{" "}
+            <a
+              href="https://github.com/alfred-ai"
+              target="_blank"
+              className="text-plum hover:underline"
+            >
+              GitHub
+            </a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  )
+}

@@ -1,8 +1,37 @@
 // src/Components/Header.tsx
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { supabase } from '../supabaseClient';
+import { User } from '@supabase/supabase-js';
 import logoSrc from "../assets/Logo.png";
 
 export default function Header() {
+  const [user, setUser] = useState<User | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+    };
+    getSession();
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+
+    return () => {
+      authListener?.subscription.unsubscribe();
+    };
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate('/'); // Redirect to splash page after logout
+  };
+
   return (
     <header className="w-full bg-white shadow-md px-6 py-2 flex justify-between items-center fixed top-0 left-0 z-50">
       {/* Left side: logo + name */}
@@ -22,6 +51,7 @@ export default function Header() {
           </button>
         </Link>
       </nav>
+
     </header>
   );
 }

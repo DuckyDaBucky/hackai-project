@@ -2,23 +2,30 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useStore } from '../Data/store'
+import { supabase } from '../supabaseClient'
 
 export default function LoadingPage() {
   const navigate = useNavigate()
   const { pdfFile, setAnalysisData } = useStore()
 
   useEffect(() => {
-    if (!pdfFile) {
-      navigate('/')
-      return
-    }
+    const checkAndProcess = async () => {
+      // No file? Go back to splash
+      if (!pdfFile) {
+        navigate('/')
+        return
+      }
 
-    // Simulate PDF processing
-    const processFile = async () => {
-      // In a real app, you would send the file to your backend here
+      // Check if logged in
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        navigate('/auth', { state: { fromLoading: true } })
+        return
+      }
+
+      // Simulate backend analysis
       await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      // Simulate receiving analysis data
+
       setAnalysisData({
         companyName: 'LTIMindtree',
         revenue: '₹355,170M',
@@ -35,7 +42,7 @@ export default function LoadingPage() {
       navigate('/report')
     }
 
-    processFile()
+    checkAndProcess()
   }, [navigate, pdfFile, setAnalysisData])
 
   return (
