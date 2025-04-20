@@ -40,6 +40,7 @@ def install_dependencies():
         "uvicorn",           # For ASGI server
         "pydantic",          # For data validation
         "python-multipart",  # For handling file uploads in FastAPI
+        f"pip install {'"fastapi[standard]"'}"
     ]
     
     # Get installed packages

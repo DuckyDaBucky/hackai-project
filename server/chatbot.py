@@ -99,12 +99,21 @@ def retrieve_top_k(query: str, top_k: int = 1):
     q_vec = model_embed.encode([query], convert_to_numpy=True)
     distances, indices = index.search(q_vec, top_k)
     results = []
-    for i in indices[0]:
+    for i, idx in enumerate(indices[0]):
         results.append({
-            "text": chunks[i],
-            "meta": metas[i]
+            "text": chunks[idx],
+            "meta": metas[idx],
+            "distance": float(distances[0][i])  # ✅ Fix here
         })
     return results
+
+
+def compute_confidence(distances):
+    max_dist = max(distances)
+    min_dist = min(distances)
+    range_dist = max_dist - min_dist if max_dist > min_dist else 1e-6
+    scores = [100 - ((d - min_dist) / range_dist) * 100 for d in distances]
+    return round(sum(scores) / len(scores), 2)
 
 # === Prompt Generator ===
 def build_prompt(context_text: str, question: str) -> str:
@@ -114,6 +123,8 @@ You are an AI assistant analyzing a company's business report.
 Answer the following question using only the context below. Be specific, detailed, 
 and include any relevant figures, examples, or supporting data. If multiple facts are found, synthesize them into a full answer.
 Use at least 3 sentences unless the answer is numeric.
+
+Do NOT use Markdown formatting (no asterisks, bold, italics, or backticks).
 
 Context:
 {context_text}
@@ -126,16 +137,60 @@ Question:
 def ask_business_question(question: str):
     top_chunks = retrieve_top_k(question, top_k=8)
     context = "\n\n".join([chunk["text"] for chunk in top_chunks])
+    distances = [chunk["distance"] for chunk in top_chunks]
+    min_distance = min(distances) if distances else 1.0
+
+    # Confidence tiering
+    if min_distance < 1.4:
+        confidence = "I am highly confident in this response."
+    elif min_distance < 1.8:
+        confidence = "I am moderately confident in this response."
+    else:
+        confidence = "I'm unsure about this response and recommend verification."
+
     prompt = build_prompt(context, question)
 
     response = model.start_chat().send_message(prompt)
 
-    source_page = top_chunks[0]["meta"]["page"] if top_chunks else "Unknown"
+    source_page = top_chunks[0]["meta"].get("page", "Unknown") if top_chunks else "Unknown"
+
+    answer_text = response.text.strip()
+    if is_unable_to_answer(answer_text):
+        return {
+            "answer": answer_text,
+            "confidence": None,
+            "sources": [],
+            "page": None
+        }
+
     return {
-        "answer": response.text.strip(),
+        "answer": answer_text,
+        "confidence": confidence,
         "sources": top_chunks,
         "page": source_page
     }
+
+
+def is_unable_to_answer(text):
+    lowered = text.lower()
+    return (
+        "i don't know" in lowered or
+        "unable to answer" in lowered or
+        "no relevant information" in lowered or
+        "not mentioned" in lowered or
+        "insufficient context" in lowered or
+        "cannot answer" in lowered or
+        "no information" in lowered or
+        "unable to fulfill" in lowered or
+        "does not contain" in lowered
+    )
+
+def output(result):
+    print(result)
+    if(result['confidence'] is None):
+        return f"\n{result['answer']}\n"
+
+    return f"\n{result['answer']}\n\nSource: page \n{result['page']}\n{result['confidence']}"
 
 class Question(BaseModel):
     question: str
@@ -177,6 +232,7 @@ async def ask_question(question: Question):
     
     try:
         result = ask_business_question(question.question)
+        ans = output(result)
         # Convert the result dictionary to a JSON-compatible string
         return JSONResponse(content=result)
     except Exception as e:

@@ -9,7 +9,9 @@ load_dotenv()
 # === CONFIG ===
 # GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 PDF_PATH = "ltimindtree_annual_report.pdf"
+
 OUTPUT_PATH = "report_slides_condensed.json"
+#PDF_PATH = os.path.abspath("ltimindtree_annual_report.pdf")
 
 # === Setup Gemini ===
 genai.configure(api_key="AIzaSyDOfZX-K1Zno0r6r61jZwHcSnfRFGCE5g8")
@@ -28,6 +30,7 @@ def extract_text_with_pages(pdf_path):
 # === Step 2: Combine all text ===
 def combine_all_text(pages):
     full_text = "\n".join([p["text"] for p in pages])
+    print(full_text)
     return full_text
 
 # === Step 3: Ask Gemini to generate condensed business slides ===
@@ -42,6 +45,8 @@ Each slide should:
 - Contain 3 to 5 \"elements\"
 - Each element should be a mini-section with 4 to 6 high-quality bullet points
 - Emphasize numbers, percentages, rankings, or KPIs wherever relevant
+
+Do NOT use Markdown formatting (no asterisks, bold, italics, or backticks).
 
 Return valid JSON with this structure:
 {{
@@ -70,7 +75,6 @@ Report:
         parsed = json.loads(raw)
         return parsed
     except Exception as e:
-        print("❌ Gemini failed to produce valid JSON:", e)
         return {"slides": []}
 
 # === Main ===
