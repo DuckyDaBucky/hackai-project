@@ -1,9 +1,12 @@
-import { ReactNode } from 'react'
+// src/Layouts/MainLayout.tsx
+import { Outlet } from 'react-router-dom'
 
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default function MainLayout() {
   return (
-    <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-      {children}
+    <div className="min-h-screen font-sans">
+      <main className="mt-24 px-6">
+        <Outlet />
+      </main>
     </div>
   )
 }
