@@ -17,6 +17,7 @@ from pathlib import Path
 
 load_dotenv()
 
+# Export the app directly for better import compatibility
 app = FastAPI()
 
 # Add CORS middleware
@@ -29,14 +30,14 @@ app.add_middleware(
 )
 
 # === CONFIGURATION ===
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# GEMINI_API_KEY = os.getenv()
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'pdf'}
 
 # Create uploads directory if it doesn't exist
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-genai.configure(api_key=GEMINI_API_KEY)
+genai.configure(api_key="AIzaSyDOfZX-K1Zno0r6r61jZwHcSnfRFGCE5g8")
 model = genai.GenerativeModel(model_name="models/gemini-2.0-flash")
 
 # Global variables to store embeddings, index, chunks and metadata

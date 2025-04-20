@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # === CONFIG ===
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 PDF_PATH = "ltimindtree_annual_report.pdf"
 OUTPUT_PATH = "report_slides_condensed.json"
 
 # === Setup Gemini ===
-genai.configure(api_key=GEMINI_API_KEY)
+genai.configure(api_key="AIzaSyDOfZX-K1Zno0r6r61jZwHcSnfRFGCE5g8")
 model = genai.GenerativeModel(model_name="models/gemini-2.0-flash")
 
 # === Step 1: Extract full text from PDF and page map ===
